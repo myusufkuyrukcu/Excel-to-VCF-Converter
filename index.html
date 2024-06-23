@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel to VCF Converter</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            width: 150px;
+            word-wrap: break-word;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .inline {
+            display: flex;
+            align-items: center;
+        }
+        .indent {
+            margin-left: 20px;
+        }
+        .version {
+            font-size: small;
+            margin-left: 10px;
+        }
+        .powered-by {
+            font-size: small;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Excel to VCF Converter
+        <span class="version">(v1.0)</span>
+    </h1>
+    <div class="powered-by">
+        Powered by <a href="https://github.com/myusufkuyrukcu" target="_blank">myusufkuyrukcu</a>
+    </div>
+    <input type="file" id="fileInput" accept=".xlsx" style="margin-top: 15px;">
+    <div class="options">
+        <div>
+            <input type="checkbox" id="headerCheckbox" checked>
+            <label for="headerCheckbox">First row is header</label>
+        </div>
+        <div>
+            <input type="checkbox" id="showAllRowsCheckbox" disabled>
+            <label for="showAllRowsCheckbox">Show all rows (Total data: <span id="totalRows">0</span>)</label>
+        </div>
+        <div class="inline">
+            <input type="checkbox" id="addAreaCodeCheckbox" disabled>
+            <label for="addAreaCodeCheckbox">Add area code to numbers</label>
+            <input type="text" id="areaCode" value="+90" disabled size="5">
+        </div>
+        <div class="inline indent">
+            <input type="checkbox" id="onlyTenPlusCheckbox" disabled>
+            <label for="onlyTenPlusCheckbox">Only add to characters longer than </label>
+            <input type="text" id="minLength" value="10" disabled size="3">
+        </div>
+    </div>
+    <button id="exportButton" style="display:none;">Export to VCF</button>
+    <div id="preview"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
